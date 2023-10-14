@@ -11,7 +11,16 @@ Mas info en el archivo ***".env.sample"***
 
 ### Funcionamiento
 
-La Api Sube Registros por defecto al inciar el server
+La Api Sube Registros por defecto al inciar el server sino hay registros en Store sino solo sincroniza las tablas existentes
+
+Para inciar el servidor en modo desarrollo (nodemon)
+```javascript
+npm run dev
+```
+O simplemente
+```
+npm run start
+```
 
 La API esta destinada ,por diferentes rutas y métodos de la URL a:
 * Crear un archivo en formato JSON y guardarlo en la Base de datos
@@ -34,6 +43,7 @@ La API esta destinada ,por diferentes rutas y métodos de la URL a:
 |GET| `http://localhost:3008/api/reparto/id/:id` | Obtener reparto por id |
 |GET| `http://localhost:3008/api/store/view`   | Obtener lista de store con un formato mejorado |
 |GET| `http://localhost:3008/api/store/view/id/:id`   | Obtener registro por Id de store con un formato mejorado |
+|GET| `http://localhost:3008/api/store/view/titulo/:titulo` ej: Advengers   | Obtener lista de registros que tengan el titulo a buscar |
 |GET| `http://localhost:3008/api/store`   | Obtener lista de store |
 |GET| `http://localhost:3008/api/store/id/:id`   | Obtener store por id |
 |GET| `http://localhost:3008/api/tipocat/find/:findCat` ej:Serie  | Obtener lista de todos los registros con el tipo de categoria |
@@ -93,8 +103,7 @@ Ejemplo del body para **POST** la ruta `http://localhost:3008/api/store` :
     "tipoGen1":"Aventura",
     "tipoGen2":"N/A",
     "tipoGen3":"N/A"
-
-} // Objeto JSON
+}
 ```
 Crear un nuevo actor :
 Ejemplo del body para **POST** ruta `http://localhost:3008/api/actor` :
@@ -139,3 +148,21 @@ Actualizar **PUT** Descripcion por id:
   "temporadas": 0
       }
 ```
+
+
+## Base de datos
+
+El proyecto utiliza una base de datos MySql y la ORM "Sequelize"
+consta de 8 tablas
+
+- StoreTrailerflix (tabla pivote)
+- TipoCategoria (contiene todos los nombre de la categorias)
+- Descripcion (con el titulo el poster el resumen y las temporadas )
+- Genero (cada registo puede contener 3 tipo de generos "Aventura,Suspenso,Drama")
+- TipoGenero (con los id de los nombre de los generos "Terror" id 2 )
+- Reparto (cada registro puede tenr un maximo de 7 actores )
+- Actores (con el nombre de actor y su id "Jim Carrey" id 23)
+- Trailer (cada registro puede contener 2 link uno alternativo y otro principal)
+
+Se adjunta imagen de las relaciones en forma esquematica en la raiz del proyecto
+
