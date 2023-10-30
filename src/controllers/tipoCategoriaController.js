@@ -113,7 +113,7 @@ const crearTipoCategorias = async (req, res) => {
 const obtenerTipoCategorias = async (req, res) => {
     const TipoCategoriasId = req.params.id;
     try {
-        const tipoCategorias = await Actores.findByPk(TipoCategoriasId);
+        const tipoCategorias = await TipoCategoria.findByPk(TipoCategoriasId);
         if (!tipoCategorias) {
             return res.status(404).json({ error: "Tipo de Categoria no encontrado" });
         }

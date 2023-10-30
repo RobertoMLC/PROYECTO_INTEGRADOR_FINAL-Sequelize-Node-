@@ -229,16 +229,24 @@ const crearStoreTrailerflix = async (req, res) => {
         const actor7 = await Actores.findOrCreate({
             where: { actoresNombreApellido: storeData.actor7 }
         });
-
+        //console.log(actor1[0],actor2,actor3,actor4,actor5,actor6,actor7)
+     //   console.log(actor1[0].toJSON().id)
+            // actor2.actores.dataValues.actoresNombreApellido,
+            // actor3.actores.dataValues.actoresNombreApellido,
+            // actor4.actores.dataValues.actoresNombreApellido,
+            // actor5.actores.dataValues.actoresNombreApellido,
+            // actor6.actores.dataValues.actoresNombreApellido,
+            // actor7.actores.dataValues.actoresNombreApellido)
+// return
         const rep = await Reparto.create({
             id: store.id,
-            actor1: actor1.id,
-            actor1: actor2.id,
-            actor1: actor3.id,
-            actor1: actor4.id,
-            actor1: actor5.id,
-            actor1: actor6.id,
-            actor1: actor7.id
+            actor1: actor1[0].toJSON().id,
+            actor2: actor2[0].toJSON().id,
+            actor3: actor3[0].toJSON().id,
+            actor4: actor4[0].toJSON().id,
+            actor5: actor5[0].toJSON().id,
+            actor6: actor6[0].toJSON().id,
+            actor7: actor7[0].toJSON().id
         });
         const descripcion = await Descripcion.create({
             id: store.id,
@@ -261,13 +269,15 @@ const crearStoreTrailerflix = async (req, res) => {
         const gen3 = await TipoGenero.findOrCreate({
             where: { tipoGeneroNombre: storeData.tipoGen3 }
         });
+    //    console.log(gen1,gen2,gen3);
+     //   return
         const genero = await Genero.create({
             id: store.id,
-            tipoGenero1: gen1.id,
-            tipoGenero2: gen2.id,
-            tipoGenero3: gen3.id
+            tipoGenero1: gen1[0].toJSON().id,
+            tipoGenero2: gen2[0].toJSON().id,
+            tipoGenero3: gen3[0].toJSON().id
         });
-        res.status(201).json(rep);
+        res.status(201).json(rep + genero + descripcion + trailer);
     } catch (error) {
         console.error("Error al crear un nueva registro a store:", error);
         res.status(500).json({ error: "Error al crear un nueva registro a store" });

@@ -33,8 +33,8 @@ La API esta destinada ,por diferentes rutas y métodos de la URL a:
 |PETICION |URL| DESCRIPCION|
 |  - | - | - |
 |GET| `http://localhost:3008/api/actores`   | Obtener lista de actores |
-|GET| `http://localhost:3000/api/actor/id/:id`   | Obtener actor por id |
-|GET| `http://localhost:3000/api/descripcion` | Obtener lista de descripciones |
+|GET| `http://localhost:3008/api/actor/id/:id`   | Obtener actor por id |
+|GET| `http://localhost:3008/api/descripcion` | Obtener lista de descripciones |
 |GET| `http://localhost:3008/api/descripcion/id/:id` | Obtener descripciones por id |
 |GET| `http://localhost:3008/api/genero/find/:findGenero` ***ej:Aventura | Obtener todas los registros que tengan el genero a buscar |
 |GET| `http://localhost:3008/api/genero`  | Obtener lista de genero |

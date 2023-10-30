@@ -10,3 +10,4 @@ async function isEmpty(table) {
 
 
 module.exports={isEmpty};
+
